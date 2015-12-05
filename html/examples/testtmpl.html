@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Test Internal Template</title>
+	<style type="text/css">
+	/* <![CDATA[ */
+		div[id^='test_item']{cursor: pointer; padding: 10px;}
+		#showResult{padding: 10px;}
+	/* ]]> */
+	</style>
+</head>
+<body>
+
+	<div id="pageContainer">
+		
+		<div id="showTest">
+			<!-- Load JS here -->
+		</div>
+		<div id="showResult">
+			
+		</div>
+		
+		<!-- Load JavaScript Library -->
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jquery.tmpl.js"></script>
+		
+		<!-- Templates scripts-->
+		<script id="testTemplate" type="text/x-jQuery-tmpl">
+			<div id="test_item_${id}" onclick="selectOnView(this, ${callback});">
+				<span>${name}</span>
+			</div>
+		</script>
+		
+		<script type="text/javascript">
+			$(function() {
+				loadItems();
+				
+			});
+			
+			function loadItems(){
+				var items = [
+					            {id : 1, name : 'Test Internal Template 1', callback : "clickOnView"},
+					            {id : 2, name : 'Test Internal Template 2', callback : "clickOnView"},
+					            {id : 3, name : 'Test Internal Template 3', callback : "clickOnView"}
+					            ];
+				
+				$.map(items, function(item){
+					var testTmpl = $("#testTemplate").tmpl(item);
+					
+					//Store Item Data in DOM
+					testTmpl.data("item", item);
+					
+					//Add template to #showTest
+					testTmpl.appendTo("#showTest");
+				});
+			}
+			
+			function clickOnView(selector){
+				var item = $(selector).data("item");
+				var sms = "This is item " + item.id;
+				
+				$("#showResult").html("<span><b>"+sms+"</b></span>");
+			}
+			
+			function selectOnView(selector, callback){
+				
+				//Convert String to Function
+				eval(callback(selector));
+			}
+			
+		</script>
+		
+	</div>
+
+</body>
+</html>

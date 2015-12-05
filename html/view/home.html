@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Collections and tips</title>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/url-collection.css" />
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand text-brand" href="#">URL Collections & Tips</a>
+			</div>
+
+			<div class="navbar-collapse collapse">
+				<ul id="menu" class="nav navbar-nav navbar-right">
+					<li id="collection" class="active"><a href="#">Collections</a></li>
+					<li id="tip"><a href="#">Tips</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div id="pageContent" class="row">
+				<!-- Will load by JS -->
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="navbar navbar-default navbar-fixed-bottom">
+			<div class="navbar-inner">
+				<div class="container">
+					<footer>
+						<div class="row">
+							<div class="span4">© Pao IM, May 2014</div>
+						</div>
+					</footer>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Import External Library -->
+	<!-- <script src="../js/rii-1.14.0.min.js"></script> -->
+	<script src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/jquery.tmpl.min.js"></script>
+
+	<!-- Custom JS Library  -->
+	<script src="../js/staticdata/content-data.js"></script>
+	<script src="../js/staticdata/collection-data.js"></script>
+	
+	<script src="../js/staticdata/tip1-data.js"></script>
+	<script src="../js/staticdata/tip2-data.js"></script>
+	<script src="../js/staticdata/tip3-data.js"></script>
+	<script src="../js/staticdata/tip4-data.js"></script>
+	<script src="../js/staticdata/tip5-data.js"></script>
+	<script src="../js/staticdata/tip6-data.js"></script>
+	<script src="../js/staticdata/tips-data.js"></script>
+	
+	<script src="../js/common.js"></script>
+	<script src="../js/custom.array-string.js"></script>
+	<script src="../js/listener/template.listener.js"></script>
+	
+	<script src="../js/controller/EventListenerController.js"></script>
+	<script src="../js/controller/HomeController.js"></script>
+	<script src="../js/controller/EventListenerNonClosure.js"></script>
+	<script src="../js/controller/CollectionController.js"></script>
+	<script src="../js/controller/TipController.js"></script>
+
+	<!-- Templates scripts-->
+	<script id="listCategoryTemplate" type="text/x-jQuery-tmpl">
+		<div id="category_item_${id}" class="page-left none-padding">
+			<div class="page-left category-box">
+				<div class="page-left padding-panel">
+					<div class="item-padding">
+						<span class="category-item">${type}</span>
+					</div>
+				</div>
+			</div>
+			<div id="categoriesList_${id}" class="page-left">
+				
+			</div>
+		</div>
+	</script>
+	
+	<script id="listItemTemplate" type="text/x-jQuery-tmpl">
+		<div id="item_${id}" class="page-left none-padding line-left line-right ${listCss}">
+			<div class="page-left padding-panel">
+				<div class="item-padding">
+					<span>${description}</span>
+				</div>
+				<div class="item-padding">
+					<a id="read_more_${id}" onclick="selectOnView(this, ${callbackview});">Read More</a> | 
+					<a id="load_content_${id}" data-link="${urlLink}" onclick="selectOnLoadContent(this, ${callbackload});">Load content</a> | 
+					<a id="new_tab_${id}" href="${urlLink}" data-link="${urlLink}" target="_blank">Open as new tab</a>
+				</div>
+			</div>
+		</div>
+	</script>
+	
+	<script id="tipItemTemplate" type="text/x-jQuery-tmpl">
+		<div id="tip_${id}" class="page-left none-padding ${listCss}">
+			<div class="padding-10">
+				<a id="view_tip_${id}" data-tip="${JSON.stringify(item)}" onclick="selectOnView(this, ${callbackview});"><span>${title}</span></a>
+			</div>
+		</div>
+	</script>
+
+	<!-- Init Js -->
+	<script type="text/javascript">
+		<!-- // hide from really old browsers that noone uses anymore
+		$(function(){
+			var hc = new HomeController();
+			hc.init();
+		});
+		//-->
+	</script>
+</body>
+</html>

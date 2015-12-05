@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Check Box Demo</title>
+</head>
+<body>
+
+	<div id="pageContainer">
+		<div id="checkboxList">
+			<input type="checkbox" value="Bike"/>I have a bike<br>
+			<input type="checkbox" value="Moto"/>I have a moto<br>
+			<input type="checkbox" value="Car"/>I have a car<br>
+			
+			<button id="getChecked">Get</button>
+			<button id="setChecked">Check All</button>
+			<button id="unChecked">Un-Checked</button>
+		</div>
+		
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/listener/base.listener.js"></script>
+		
+		<script type="text/javascript">
+			$(function() {
+				
+				setOnButtonClickListener($("#getChecked"), clickOnGetChecked);
+				setOnButtonClickListener($("#setChecked"), clickOnSetChecked);
+				setOnButtonClickListener($("#unChecked"), clickOnUnchecked);
+			});
+			
+			function clickOnGetChecked(button){
+				var result = "";
+				$("input:checkbox").each(function(){
+					if($(this).is(":checked")){
+						result += $(this).val() + " ";
+					}
+				});
+				
+				alert(result);
+				
+				//alert($("input:checked").val());
+			}
+			
+			function clickOnSetChecked(button){
+				$("input:checkbox").each(function(){
+					//console.log($(this).is(":checked"));
+					$(this).attr("checked", "checked");
+				});
+			}
+			
+			function clickOnUnchecked(button){
+				$("input:checkbox").each(function(){
+					//$(this).attr("checked", false);
+					$(this).removeAttr("checked");
+				});
+			}
+			
+		</script>
+	</div>
+
+</body>
+</html>

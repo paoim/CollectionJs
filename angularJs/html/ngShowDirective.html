@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>NgShow Directive</title>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="pageContainer">
+		<div id="pageHeader">
+			<div class="navbar navbar-inverse nav nav-space">
+				<div class="navbar-inner navbar-padding">
+					<div class="container">
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li class="active" id="collection"><a href="#">Collections</a></li>
+								<li id="tip"><a href="#">Tips</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div id="pageBody">
+			<div ng-controller="StoreController as store">
+				<!-- <div class="list-group" ng-repeat="product in store.products">
+					<div ng-hide="product.soldOut" class="list-group-item"> -->
+					<!-- <div ng-show="!product.soldOut" class="list-group-item"> -->
+						<!-- <h1>{{product.name}}</h1>
+						<h2>{{product.price}}</h2>
+						<p>{{product.description}}</p>
+						<button ng-show="products.canPurchase">Add to Cart</button>
+					</div>
+				</div> -->
+				
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="product in store.products">
+						<h3>{{product.name}}</h3>
+						<h3>{{product.price | currency}}</h3>
+						<p>{{product.description}}</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="pageFooter">
+			
+		</div>
+		
+		<script type="text/javascript" src="../js/angular.min.js"></script>
+		<script type="text/javascript" src="../js/ngShowDirectiveApp.js"></script>
+	</div>
+
+</body>
+</html>

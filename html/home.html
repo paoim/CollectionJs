@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Collections</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="css/urlcollection.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+	<div id="pageContainer">
+		<div id="pageHeader">
+			<div class="navbar navbar-inverse nav nav-space">
+				<div class="navbar-inner navbar-padding">
+					<div class="container">
+						<div class="nav-collapse collapse">
+							<ul id="menu" class="nav">
+								<li class="active" id="collection"><a href="#">Collections</a></li>
+								<li id="tip"><a href="#">Tips</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div id="pageBody">
+			<!-- Will load by JS -->
+			
+		</div>
+		<div id="pageFooter">
+			
+		</div>
+		
+		
+		
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.tmpl.min.js"></script>
+		
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/custom.array-string.js"></script>
+		
+		<script type="text/javascript" src="js/staticdata/tip1-data.js"></script>
+		<script type="text/javascript" src="js/staticdata/tip2-data.js"></script>
+		<script type="text/javascript" src="js/staticdata/tip3-data.js"></script>
+		<script type="text/javascript" src="js/staticdata/tip4-data.js"></script>
+		<script type="text/javascript" src="js/staticdata/tip5-data.js"></script>
+		<script type="text/javascript" src="js/staticdata/tip6-data.js"></script>
+		<script type="text/javascript" src="js/staticdata/tips-data.js"></script>
+		
+		<script type="text/javascript" src="js/staticdata/content-data.js"></script>
+		<script type="text/javascript" src="js/staticdata/collection-data.js"></script>
+		
+		<script type="text/javascript" src="js/listener/base.listener.js"></script>
+		<script type="text/javascript" src="js/listener/template.listener.js"></script>
+		
+		<script type="text/javascript" src="js/backoffice/home.backoffice.js"></script>
+		<script type="text/javascript" src="js/backoffice/collection.backoffice.js"></script>
+		<script type="text/javascript" src="js/backoffice/tip.backoffice.js"></script>
+		
+		<!-- Templates scripts-->
+		<script id="listCategoryTemplate" type="text/x-jQuery-tmpl">
+			<div id="category_item_${id}" class="page-left none-padding">
+				<div class="page-left category-box">
+					<div class="page-left padding-panel">
+						<div class="item-padding">
+							<span class="category-item">${type}</span>
+						</div>
+					</div>
+				</div>
+				<div id="categoriesList_${id}" class="page-left">
+					
+				</div>
+			</div>
+		</script>
+		
+		<script id="listItemTemplate" type="text/x-jQuery-tmpl">
+			<div id="item_${id}" class="page-left none-padding line-left line-right ${listCss}">
+				<div class="page-left padding-panel">
+					<div class="item-padding">
+						<span>${description}</span>
+					</div>
+					<div class="item-padding">
+						<a id="read_more_${id}" onclick="selectOnView(this, ${callbackview});">Read More</a> | 
+						<a id="load_content_${id}" data-link="${urlLink}" onclick="selectOnLoadContent(this, ${callbackload});">Load content</a> | 
+						<a id="new_tab_${id}" href="${urlLink}" data-link="${urlLink}" target="_blank">Open as new tab</a>
+					</div>
+				</div>
+			</div>
+		</script>
+		
+		<script id="tipItemTemplate" type="text/x-jQuery-tmpl">
+			<div id="tip_${id}" class="page-left none-padding ${listCss}">
+				<div class="padding-10">
+					<a id="view_tip_${id}" data-tip="${JSON.stringify(item)}" onclick="selectOnView(this, ${callbackview});"><span>${title}</span></a>
+				</div>
+			</div>
+		</script>
+		
+		<script type="text/javascript">
+			$.ajaxSetup( {
+				cache: false,
+				data: null
+			});
+		
+			$(function() {
+				
+				initHome();
+				
+			});
+			
+		</script>
+		
+	</div>
+
+</body>
+</html>
