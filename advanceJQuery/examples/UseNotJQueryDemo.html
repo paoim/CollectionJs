@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("p:not(.intro)").css("background-color", "yellow");
+    $("#choose > li[disabled]").css("background-color", "red");
+    $("#choose > li:not(li[disabled])").css("background-color", "green");
+});
+</script>
+</head>
+<body>
+
+<h1>Welcome to My Homepage</h1>
+
+<p class="intro">My name is Pao Im.</p>
+<p>I live in Shakopee.</p>
+<p>My son name is Monneadam.</p>
+
+<p>Who is your favourite:</p>
+
+<ul id="choose">
+  <li disabled>Terri</li>
+  <li>Kimsroun</li>
+  <li>Kimsoma</li>
+</ul>
+
+</body>
+</html>
